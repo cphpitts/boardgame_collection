@@ -1,0 +1,60 @@
+{% extends 'BoardGame/boardgame_base.html' %}
+{% load staticfiles %}
+
+{% block title %}BIC: Hot Games{% endblock %}
+
+{% block pagetop-css %} cover-boardgame short-cover {% endblock %}
+{% block removable-pagetop %}{% endblock %}
+
+
+{% block appcontent %}
+    <div id="collection_container">
+
+
+        <h4>BoardGameGeek's Hottest {{ game_type | title }}s</h4>
+        <div style="clear:both;width: 100%; height:20px;"></div>
+        <form id="SearchForm" name=SearchForm" method="POST" action="">
+            {% csrf_token %}
+            <label for ="game_type">Game Type:</label>
+            <select name="game_type" id="game_type">
+                <option value="boardgame">BoardGame</option>
+                <option value="rpg">RPG</option>
+            </select>
+            <button class="bg_btn main_btn" type="submit">Search</button>
+
+        </form>
+
+        <div style="clear:both;width: 100%;"></div>
+        <div class="list_container">
+            {% for item in games %}
+                <div class="game_container hot_game">
+                    <div class="image">
+                        <div class="image_wrapper">
+                            <img src="{{ item.thumbnail }}" alt="{{ item.title }}" >
+                        </div>
+                    </div>
+                    <div class="title">
+                        {{ item.title }}
+                    </div>
+                    <a href="../{{ item.id }}/addHot"><div class="bg_btn main_btn">Add to collection</div></a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+<script>
+    document.getElementById('game_type').value = "{{ game_type }}";
+</script>
+
+
+<!--        <form name="searchForm" method="get" action="{% url 'bg_search' %}">-->
+<!--            <div class="frmObject_container">-->
+<!--&lt;!&ndash;                {% csrf_token %}&ndash;&gt;-->
+<!--                <div class="formRow">-->
+<!--					<label for="username">Username:</label>-->
+<!--					<input type="text" id="username" name="username">-->
+<!--				</div>-->
+<!--            </div>-->
+<!--        </form>-->
+{% endblock %}
+

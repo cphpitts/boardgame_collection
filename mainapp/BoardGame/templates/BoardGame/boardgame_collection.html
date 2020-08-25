@@ -1,0 +1,99 @@
+{% extends 'BoardGame/boardgame_base.html' %}
+{% load staticfiles %}
+
+{% block title %}BIC: Collection{% endblock %}
+
+{% block pagetop-css %} cover-boardgame short-cover {% endblock %}
+{% block removable-pagetop %}{% endblock %}
+
+
+{% block appcontent %}
+    {% if message != "" %}
+        <div class="message_container">
+            {{ message }}
+        </div>
+    {% endif %}
+
+    <div id="collection_container">
+        <div style="clear:both;width: 100%; height:20px;"></div>
+        <h4 style="width: 100%;">View BoardGame Collection</h4>
+
+        <div style="clear:both;width: 100%; height:20px;"></div>
+        <div class="btn_row">
+            <a href="{% url 'bg_addGame' %}" class="bg_btn main_btn"><div class="btn_container" >Add Game</div></a>
+            <a href="{% url 'bg_search' %}" class="bg_btn main_btn"><div class="btn_container" >View Hot Games</div></a>
+            <div id="randGame" class="bg_btn main_btn" onclick="showModal()">Pick Random Game</div>
+        </div>
+        <div style="clear:both;width: 100%;"></div>
+        {% for game in games %}
+            <a href="{{ game.id }}/detail" class="game_container">
+            <div>
+                <div class="game_image">
+                    {% if game.game_image_path == '' %}
+                        <img src="{% static 'BoardGame/images/noImage.jpg' %}" alt="{{ game.game_name }}">
+                    {% else %}
+                        <img src="{{ game.game_image_path }}" alt="{{ game.game_name }}" class="img-fluid">
+                    {% endif %}
+                </div>
+                <div class="game_text">
+                    {{ game.game_name }}
+                </div>
+            </div>
+            </a>
+
+        {% endfor %}
+
+        {% if games.has_other_pages %}
+            <div class="page_list">
+                <ul class="pagination">
+                    {% if games.has_previous %}
+                        <li><a href="?page={{ games.previous_page_number }}">&laquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><span>&laquo;</span></li>
+                    {% endif %}
+                    {% for i in games.paginator.page_range %}
+                        {% if games.number == i %}
+                            <li class="active"><span> {{ i }} <span class="sr-only">(current)</span></span></li>
+                        {% else %}
+                            <li><a href="?page={{ i }}">{{ i }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if games.has_next %}
+                        <li><a href="?page={{ games.next_page_number }}">&raquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><span>&raquo;</span></li>
+                    {% endif %}
+                </ul>
+            </div>
+        {% endif %}
+
+
+
+    </div>
+
+<!-- Game Picker Modal -->
+<div class="modal fade" id="gamePickerModal" tabindex="-1" role="dialog" aria-labelledby="gamePickerModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="gamePickerModalLabel">You Should Play...</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <div type="button" class="bg_btn main_btn btn-primary" onclick="chooseGame()">Choose Another</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+    {{ block.super }}
+    <script src="{% static 'BoardGame/js/scripts.js' %}"></script>
+{% endblock %}

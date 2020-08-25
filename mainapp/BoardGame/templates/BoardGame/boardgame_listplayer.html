@@ -1,0 +1,19 @@
+{% extends 'BoardGame/boardgame_base.html' %}
+{% load staticfiles %}
+
+{% block title %}List Players{{ game_detail.game_name }}{% endblock %}
+
+{% block pagetop-css %} cover-boardgame short-cover {% endblock %}
+{% block removable-pagetop %}{% endblock %}
+
+
+{% block appcontent %}
+
+{% for player in players %}
+    {{ player.player_fname }} {{ player.player_lname }}
+{% endfor %}
+
+
+
+{% endblock %}
+

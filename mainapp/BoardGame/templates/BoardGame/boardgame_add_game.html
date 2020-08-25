@@ -1,0 +1,73 @@
+{% extends 'BoardGame/boardgame_base.html' %}
+{% load staticfiles %}
+
+{% block title %}BIC: Add New Game{% endblock %}
+{% block pagetop-css %} cover-boardgame short-cover {% endblock %}
+{% block removable-pagetop %}{% endblock %}
+
+
+{% block appcontent %}
+	<div id="game-form">
+		<div style="clear:both;width: 100%; height:20px;"></div>
+		<h4>Add New Game</h4>
+		<div style="clear:both;width: 100%; height:20px;"></div>
+		<form name="gameForm" method="POST" action="{% url 'bg_addGame' %}">
+			<div class="frmObject_container">
+				{% csrf_token %}
+				{{ form.non_field_errors }}
+
+                <div class="formRow">
+					{{ form.game_name.errors }}
+					<label for="{{ form.game_name.id_for_label }}">Name:</label>
+					{{ form.game_name }}
+				</div>
+				<div class="formRow">
+					{{ form.game_expansion.errors }}
+					<label for="{{ form.game_expansion.id_for_label }}">Expansion?</label>
+					{{ form.game_expansion }}
+				</div>
+				<div class="formRow">
+					{{ form.game_publisher.errors }}
+					<label for="{{ form.game_publisher.id_for_label }}">Publisher:</label>
+					{{ form.game_publisher }}
+				</div>
+				<div class="formRow">
+					{{ form.game_designer.errors }}
+					<label for="{{ form.game_designer.id_for_label }}">Designer(s):</label>
+					{{ form.game_designer }}
+				</div>
+				<div class="formRow playerCount">
+					<div>Player Count:</div>
+					{{ form.game_min_player.errors }}
+					<label for="{{ form.game_min_player.id_for_label }}">Min:</label>
+					{{ form.game_min_player }}
+					{{ form.game_max_player.errors }}
+					<label for="{{ form.game_max_player.id_for_label }}">Max:</label>
+					{{ form.game_max_player }}
+				</div>
+				<div class="formRow">
+					{{ form.game_playtime.errors }}
+					<label for="{{ form.game_playtime.id_for_label }}">Play Time:</label>
+					{{ form.game_playtime }}
+				</div>
+				<div class="formRow">
+					{{ form.game_image_path.errors }}
+					<label for="{{ form.game_image_path.id_for_label }}">Image (URL):</label>
+					{{ form.game_image_path }}
+				</div>
+
+
+				<div class="frmBtn_container">
+					<input type="submit" class="bg_btn main_btn"  value="Add New Game" name="Add_Game">
+					<a href="{% url 'bg_viewCollection' %}" class="bg_btn"><div type="button"  value="Cancel">Cancel</div> </a>
+
+				</div>
+
+			</div>
+		</form>
+		<br>
+	</div>
+
+
+{% endblock %}
+

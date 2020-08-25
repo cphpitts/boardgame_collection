@@ -1,0 +1,89 @@
+ {% load staticfiles %}
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>
+        {% block title %}Python Live Project{% endblock %}
+    </title>
+    {% block tab-icon %}<link rel="icon" href="{% static 'images/png-icons/robot4.png' %}">{% endblock %}
+    {% block stylesheets %}
+        <link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+        <!-- External CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <!-- Internal CSS -->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/slick-theme.css' %}">
+    {% endblock %}
+</head>
+
+<body>
+        <section class="{% block pagetop-css %}cover-main{% endblock%}" id="home">
+
+            {% block navbar %}
+                <header>
+                    <nav class="nav-wrapper">
+                        <div class="logo">
+                            <a href="{% url 'home' %}">
+                                {% block nav-icon %}<img src="{% static 'images/png-icons/robot4.png' %}">{% endblock %}
+                            </a>
+                        </div>
+                        <ul class="menu">
+                            <li><a href="{% block home-button %}{% url 'home' %}{% endblock %}">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#apps">Apps</a></li>
+                        </ul>
+                    </nav>
+                </header>
+            {% endblock %}
+            {% block removable-pagetop %}
+                <div class="wrapper">
+                    <ul id="scene"
+                        data-invert-x="false"
+                        data-invert-y="false"
+                        data-scalar-x="7"
+                        data-scalar-y="7"
+                        data-friction-x="0.1"
+                        data-friction-y="0.1"
+                        data-origin-x="0.5"
+                        data-origin-y="0.5">
+                            <li class="layer name" data-depth="0.9">{% block page-title %}App Builder 9000{% endblock %}</li>
+                            <li class="layer title" data-depth="0.3">{% block page-subtitle %}Python Live Project{% endblock %}</li>
+                            <li class="layer btn btn-main" data-depth="0.3">
+                                {% block button1 %}<a href="#" class="contact-btn">View Portfolio</a>{% endblock %}
+                                {% block button2 %}<a href="#" class="contact-btn">Contact Us</a>{% endblock %}
+                                {% block button3 %}{% endblock %}
+                                {% block button4 %}{% endblock %}
+                            </li>
+                    </ul>
+                </div>
+            {% endblock %}
+        </section>
+
+    <section class="main_content">
+        {% block appcontent %}{% endblock %}
+    </section>
+
+    <section>
+        {% include 'footer.html' %}
+    </section>
+
+    <!-- Optional JavaScript -->
+    {%  block javascript %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="{% static 'js/parallax.min.js' %}"></script>
+        <script src="{% static 'js/masonry.js' %}"></script>
+        <script src="{% static 'js/slick.min.js' %}"></script>
+        <script src="{% static 'js/scripts.js' %}"></script>
+        <script>
+            var scene = document.getElementById('scene');
+            var parallax = new Parallax(scene);
+        </script>
+    {%  endblock %}
+</body>
+
+</html>

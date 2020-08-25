@@ -1,0 +1,97 @@
+{% extends 'BoardGame/boardgame_base.html' %}
+{% load staticfiles %}
+
+{% block title %}BIC: {{ game_detail.game_name }}{% endblock %}
+
+{% block pagetop-css %} cover-boardgame short-cover {% endblock %}
+{% block removable-pagetop %}{% endblock %}
+
+
+{% block appcontent %}
+
+    <div id="collection_container">
+<!--        <a href="{% url 'bg_viewCollection' %}" class="bg_btn main_btn"><div class="btn_container" >Return to Collection</div></a>-->
+
+        <div style="clear:both;width: 100%;"></div>
+        <div class="game_details">
+            <div class="image_container">
+                {% if game_detail.game_image_path == '' %}
+                    <img src="{% static 'BoardGame/images/noImage.jpg' %}" alt="{{ game_detail.game_name }}">
+                {% else %}
+                    <img src="{{ game_detail.game_image_path }}" alt="{{ game_detail.game_name }}">
+                {% endif %}
+            </div>
+            <div class="details_container">
+                <div class="game_name">{{ game_detail.game_name }}
+                    {% if game_detail.game_expansion == True %}
+                        <span class="badge badge-success">Expansion</span>
+                    {% endif %}
+                </div>
+                <hr>
+                <table>
+                {% if game_detail.game_publisher != '' %}
+                    <tr>
+                        <td><span>Publisher: </span></td>
+                        <td>{{ game_detail.game_publisher }}</td>
+                    </tr>
+                {% endif %}
+                {% if game_detail.game_designer != '' %}
+                    <tr>
+                        <td><span>Designed By: </span></td>
+                        <td>{{ game_detail.game_designer }}</td>
+                    </tr>
+                {% endif %}
+                {% if game_detail.game_min_player != '' or game_detail.game_max_player != Null %}
+                    <tr>
+                        <td><span>Player Count: </span></td>
+                        <td>
+                            {% if game_detail.game_min_player == '' %} {{ game_detail.game_max_player }}
+                            {% elif game_detail.game_max_player == '' %} {{ game_detail.game_min_player }}
+                            {% else %} {{ game_detail.game_min_player }} to {{ game_detail.game_max_player }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endif %}
+                {% if game_detail.game_playtime != '' %}
+                    <tr>
+                        <td><span>Playtime: </span></td>
+                        <td>{{ game_detail.game_playtime }}</td>
+                    </tr>
+                {% endif %}
+                </table>
+            </div>
+
+        </div>
+        <div class="btn_row" style="width: 50%;">
+            <a href="edit" class="bg_btn main_btn"><div class="btn_container" >Edit Details</div></a>
+            <button type="button" class="bg_btn main_btn" data-toggle="modal" data-target="#deleteModal">Delete Game</button>
+        </div>
+    </div>
+
+<!-- DELETE CONFIRMATION MODAL -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteModalLabel">Are You Sure?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to delete {{ game_detail.game_name }}?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="bg_btn" data-dismiss="modal">Cancel</button>
+            <a href="delete" class="bg_btn btn_highlight"><div class="btn_container" >Delete</div></a>
+<!--            <button type="button" class="btn btn-primary">Yes, Delete</button>-->
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+{% endblock %}
+

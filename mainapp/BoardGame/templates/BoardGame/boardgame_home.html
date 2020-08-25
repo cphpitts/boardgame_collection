@@ -1,0 +1,24 @@
+{% extends 'BoardGame/boardgame_base.html' %}
+{% load staticfiles %}
+
+{% block page-title %}Boardgame Information Collector{% endblock %}
+{% block page-subtitle %}Manage Your Boardgame Collection and Stay Up to Date on News{% endblock %}
+{% block button1 %}<a href="{% url 'bg_viewCollection' %}" class="contact-btn">Manage Collection</a>{% endblock %}
+{% block button2 %}<a href="{% url 'bg_news' %}" class="contact-btn">Find News</a>{% endblock %}
+
+{% block appcontent %}
+    <section class="text-container">
+        <br><br>
+        <h2 class="sub-title">Welcome to the Boardgame Information Collector</h2>
+          <div>
+            <p>
+                The Boardgame Information collector allows users to track their boardgame collection by either manually inputting information or using an API to add games listed on BoardGameGeek's list of hot games. This app also features a news section that uses a web scraper to take the most recent articles from DiceTowerNews.com.
+            </p>
+              <p><span class="bold">Technologies: </span>HTML, CSS, Javascript, Python, Django</p>
+              <p><span class="bold":>API Information: </span>https://boardgamegeek.com/wiki/page/BGG_XML_API2</p>
+        </div>
+    </section>
+
+
+{% endblock %}
+

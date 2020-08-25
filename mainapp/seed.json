@@ -1,0 +1,86 @@
+[
+    {
+        "model": "BoardGame.Game",
+        "pk": 1,
+        "fields": {
+            "game_name": "Ticket to Ride",
+            "game_designer": "Alan Moon",
+            "game_publisher": "Days of Wonder",
+            "game_min_player": 2,
+            "game_max_player": 5,
+            "game_image_path": "https://cf.geekdo-images.com/imagepage/img/JrPAWdwNO6pAJGQ0snkUw7A0OcI=/fit-in/900x600/filters:no_upscale()/pic38668.jpg",
+            "game_playtime": "30-60 minutes",
+            "game_expansion": false
+      }
+    },
+    {
+        "model": "BoardGame.Game",
+        "pk": 2,
+        "fields": {
+            "game_name": "Ticket to Ride Map Collection: Volume 1 - Team Asia & Legendary Asia",
+            "game_designer": "Alan Moone",
+            "game_publisher": "Days of Wonder",
+            "game_min_player": 2,
+            "game_max_player": 6,
+            "game_image_path": "https://cf.geekdo-images.com/imagepage/img/Chi2qAH7gHkK8fRIb6F8j-KVki0=/fit-in/900x600/filters:no_upscale()/pic1077579.jpg",
+            "game_playtime": "30-60 minutes",
+            "game_expansion": true
+        }
+    },
+    {
+        "model": "BoardGame.Game",
+        "pk": 3,
+        "fields": {
+            "game_name": "Fields of Arle",
+            "game_designer": "Uwe Rosenberg",
+            "game_publisher": "Z-Man Games, Inc.",
+            "game_min_player": 1,
+            "game_max_player": 2,
+            "game_image_path": "https://cf.geekdo-images.com/imagepage/img/pKllREhSqlALLWaQRDVxKDKuEO0=/fit-in/900x600/filters:no_upscale()/pic2225968.png",
+            "game_playtime": "60-120 minutes",
+            "game_expansion": false
+        }
+    },
+      {
+        "model": "BoardGame.Game",
+        "pk": 4,
+        "fields": {
+            "game_name": "Funkoverse Strategy Game",
+            "game_designer": "Prospero Hall",
+            "game_publisher": "Funko Games",
+            "game_min_player": 2,
+            "game_max_player": 4,
+            "game_image_path": "https://cf.geekdo-images.com/imagepage/img/oi1srPaIScw8pXoieXw-3UPfnVs=/fit-in/900x600/filters:no_upscale()/pic4864897.jpg",
+            "game_playtime": "20-60 minutes",
+            "game_expansion": false
+        }
+    },
+    {
+        "model": "BoardGame.Game",
+        "pk": 5,
+        "fields": {
+            "game_name": "Funkoverse Strategy Game: Kool-Aid Man 100",
+            "game_designer": "Prospero Hall",
+            "game_publisher": "Funko Games",
+            "game_min_player": 2,
+            "game_max_player": 4,
+            "game_image_path": "https://cf.geekdo-images.com/imagepage/img/B0h4aiRG2hQOfBzZV9xGfaGMD28=/fit-in/900x600/filters:no_upscale()/pic5265834.jpg",
+            "game_playtime": "20-60 minutes",
+            "game_expansion": true
+        }
+    },
+    {
+        "model": "BoardGame.Game",
+        "pk": 6,
+        "fields": {
+            "game_name": "Genesys",
+            "game_designer": "Max Brooke",
+            "game_publisher": "Fantasy Flight Games",
+            "game_min_player": 2,
+            "game_max_player": 6,
+            "game_image_path": "https://cf.geekdo-images.com/imagepage/img/XHz2MbrqbBHG8ErF2YGvt1Q7V-0=/fit-in/900x600/filters:no_upscale()/pic3763527.jpg",
+            "game_playtime": "60-180 minutes",
+            "game_expansion": false
+        }
+    }
+]

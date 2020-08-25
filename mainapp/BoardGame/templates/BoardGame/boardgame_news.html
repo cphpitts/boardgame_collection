@@ -1,0 +1,34 @@
+{% extends 'BoardGame/boardgame_base.html' %}
+{% load staticfiles %}
+
+{% block title %}BIC: BoardGame News{% endblock %}
+
+{% block pagetop-css %} cover-boardgame short-cover {% endblock %}
+{% block removable-pagetop %}{% endblock %}
+
+
+{% block appcontent %}
+    <div id="collection_container">
+
+
+        <h4>Boardgame News</h4>
+        <div style="clear:both;width: 100%; height:20px;"></div>
+
+        <div class="list_container">
+        {% for story in page %}
+            <a href="http://dicetowernews.com{{ story.story_link }}" target="_blank">
+                <div class="story_container">
+                    <div class="story_img">
+                         {% if story.story_image %}
+                            <img src="{{ story.story_image }}" alt="News Story">
+                        {% endif %}
+                    </div>
+                    <div class="story_title">
+                        {{ story.story_title }}
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}

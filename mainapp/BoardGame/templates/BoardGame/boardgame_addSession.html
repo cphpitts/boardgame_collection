@@ -1,0 +1,35 @@
+{% extends 'BoardGame/boardgame_base.html' %}
+{% load staticfiles %}
+
+{% block title %}BIC: Add New Session{% endblock %}
+{% block pagetop-css %} cover-boardgame short-cover {% endblock %}
+{% block removable-pagetop %}{% endblock %}
+
+
+{% block appcontent %}
+	<div id="player-form">
+		<div style="clear:both;width: 100%; height:20px;"></div>
+		<h4>Add New Session</h4>
+		<div style="clear:both;width: 100%; height:20px;"></div>
+		<form name="sessionForm" method="POST" action="{% url 'bg_addSession' %}">
+			<div class="frmObject_container">
+				{% csrf_token %}
+				{{ form.non_field_errors }}
+
+                {{ form.as_p }}
+
+
+				<div class="frmBtn_container">
+					<input type="submit" class="bg_btn main_btn"  value="Add New Session" name="Add_Session">
+					<a href="{% url 'bg_viewCollection' %}" class="bg_btn"><div type="button"  value="Cancel">Cancel</div> </a>
+
+				</div>
+
+			</div>
+		</form>
+		<br>
+	</div>
+
+
+{% endblock %}
+
